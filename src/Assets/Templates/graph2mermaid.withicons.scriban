@@ -1,0 +1,64 @@
+{{~# https://github.com/scriban/scriban #~}}
+%%{
+    init: {
+    "theme": "neutral",
+    "fontFamily": "monospace",
+    "flowchart": {
+        "htmlLabels": true,
+        "curve": "basis"
+    },
+    "look": "handDrawn"
+    }
+}%%
+flowchart LR
+
+{{~# Manage node #~}}
+{{~ for node in nodes ~}}
+	{{~ if node.type != "ExternalDependency" ~}}
+		{{-
+			case node.type
+				when "Service"
+					node.key + "@{ label: \"" + node.name + "\", icon: \"azure:worker-container-app\", pos: \"b\"}" 
+				else
+					nodeText = node.name | string.replace "\"" "&quot;" | string.replace "<" "&lt;" | string.replace ">" "&gt;"
+					node.key + "[" + nodeText + "]"
+			end
+		}}
+	{{~ end ~}}
+{{~ end }}
+
+subgraph Dependencies
+{{~ for node in nodes ~}}
+	{{~ if node.type == "ExternalDependency" ~}}
+		{{
+			nodeText = (node.properties | object.to_json | string.replace "\"" "" | string.replace "{" "" | string.replace "}" "" | string.replace "," "<br/>")
+			if nodeText == "null"
+				nodeText = ""
+			end
+			case node.name
+				when "ApiDependency"
+					nodeIcon = "azure:api-connections"
+				when "CosmosDbDependency"
+					nodeIcon = "azure:azure-cosmos-db"
+				when "PackageDependency"
+					nodeIcon = "devicon:nuget"
+				when "RedisDependency"
+					nodeIcon = "azure:cache-redis"
+				when "SqlDependency"
+					nodeIcon = "azure:sql-database"
+				else
+					nodeIcon = "teenyicons:question-circle-solid"
+			end
+			node.key + "@{ label: \"" + nodeText + "\", icon: \"" + nodeIcon + "\", pos: \"b\"}"
+		}}
+	{{~ end ~}}
+{{~ end ~}}
+end
+
+{{~ for edge in edges ~}}
+	{{~ link = "-->" ~}}
+	{{~ if edge.type == "ExternalDependency" ~}}
+		{{~ link = "--->" ~}}
+	{{~ end ~}}
+	{{ edge.from }} {{ link }} {{ edge.to }}
+{{~ end ~}}

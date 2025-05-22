@@ -1,0 +1,42 @@
+{
+  "profiles": {
+    "lmondeil.clitemplate": {
+      "commandName": "Project",
+      "commandLineArgs": "show-full-help -o ./readme.cli.help.md",
+      "workingDirectory": "$(solutiondir)"
+    },
+    "ping": {
+      "commandName": "Project",
+      "commandLineArgs": "ping"
+    },
+    "settings show": {
+      "commandName": "Project",
+      "commandLineArgs": "settings show\r\n"
+    },
+    "settings set attributes-to-scan": {
+      "commandName": "Project",
+      "commandLineArgs": "settings set attributes-to-scan ApiDependencyAttribute CosmosDbDependencyAttribute PackageDependencyAttribute RedisDependencyAttribute SqlDependencyAttribute ApiDependency CosmosDbDependency PackageDependency RedisDependency SqlDependency"
+    },
+    "extract.external": {
+      "commandName": "Project",
+      "commandLineArgs": "extract -i \"example\\MyApi\\MyApi.sln\" -o \"example\\MyApi\\docs\\generated\\external.dependencies.json\" -r \"MyApi\" -e"
+    },
+    "extract.full": {
+      "commandName": "Project",
+      "commandLineArgs": "extract -i \"example\\MyApi\\MyApi.sln\" -o \"example\\MyApi\\docs\\generated\\full.dependencies.mmd\" -r \"unitservice-offer\""
+    },
+    "settings set exclude-classes": {
+      "commandName": "Project",
+      "commandLineArgs": "settings set exclude-classes \"^ILogger<.*\" \"^string$\""
+    },
+    "export": {
+      "commandName": "Project",
+      "commandLineArgs": "export -i \"example\\MyApi\\docs\\generated\\full.dependencies.json\" -o \"example\\MyApi\\docs\\generated\\full.dependencies.mmd\"",
+      "workingDirectory": "$(solutiondir)"
+    },
+    "Debug": {
+      "commandName": "Project",
+      "commandLineArgs": "extract -i \"C:\\dev\\temp\\MyApi\\MyApi.sln\" -o C:\\dev\\temp\\MyApi\\docs\\generated\\MyApi.graph.mmd -e"
+    }
+  }
+}

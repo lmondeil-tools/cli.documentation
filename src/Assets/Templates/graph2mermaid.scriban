@@ -1,0 +1,43 @@
+{{~# https://github.com/scriban/scriban #~}}
+%%{
+    init: {
+    "theme": "neutral",
+    "fontFamily": "monospace",
+    "flowchart": {
+        "htmlLabels": true,
+        "curve": "basis"
+    },
+    "look": "handDrawn"
+    }
+}%%
+flowchart LR
+
+	classDef service fill:orange
+	classDef externaldependency fill:cyan,text-align:left,stroke-width:0px
+	classDef sqldependency fill:cyan,text-align:left
+
+
+{{~# Manage node #~}}
+{{~ for node in nodes ~}}
+	{{
+		case node.type
+			when "Service"
+				node.key + "[" + node.name + "]:::service"
+			when "ExternalDependency"
+				nodeText = node.name + "<br/>" + (node.properties | object.to_json | string.replace "\"" "" | string.replace "{" "" | string.replace "}" "" | string.replace "," "<br/>")
+				case node.name
+					when "SqlDependency"
+						node.key + "[(" + nodeText + ")]:::sqldependency"
+					else
+						node.key + "[" + nodeText + "]:::externaldependency"
+				end
+
+			else
+				node.key + "[" + node.name + "]"
+		end
+	}}
+{{~ end }}
+
+{{~ for edge in edges ~}}
+	{{ edge.from }} --> {{ edge.to }}
+{{~ end }}

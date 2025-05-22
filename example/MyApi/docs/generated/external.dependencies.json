@@ -1,0 +1,24 @@
+[
+  {
+    "Key": "MyApi",
+    "Name": "MyApi",
+    "Type": 1,
+    "Properties": null,
+    "DependenciesLinks": [
+      {
+        "Name": "MyDocumentation",
+        "Key": "MyDocumentation#FirstInfo:Hello\u0026SecondInfo:World"
+      }
+    ]
+  },
+  {
+    "Key": "MyDocumentation#FirstInfo:Hello\u0026SecondInfo:World",
+    "Name": "MyDocumentation",
+    "Type": 3,
+    "Properties": {
+      "FirstInfo": "Hello",
+      "SecondInfo": "World"
+    },
+    "DependenciesLinks": null
+  }
+]

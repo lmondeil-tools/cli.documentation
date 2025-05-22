@@ -1,0 +1,66 @@
+{
+  "ServiceName": "MyApi",
+  "ExternalDependenciesAttributes": [],
+  "RootClasses": [
+    {
+      "ConstructorParametersTypesNames": [
+        "IMyService"
+      ],
+      "ConstructorDependencies": [
+        {
+          "Name": "IMyService",
+          "Implementations": [
+            {
+              "$type": "ExportClass",
+              "ConstructorParametersTypesNames": [
+                "IMyRepository"
+              ],
+              "ConstructorDependencies": [
+                {
+                  "Name": "IMyRepository",
+                  "Implementations": [
+                    {
+                      "$type": "ExportClass",
+                      "ConstructorParametersTypesNames": [],
+                      "ConstructorDependencies": [],
+                      "Name": "MyRepository",
+                      "Namespace": "MyApi",
+                      "Modifier": 8345,
+                      "Attributes": [
+                        {
+                          "Key": "MyDocumentation#FirstInfo:Hello\u0026SecondInfo:World",
+                          "Name": "MyDocumentation",
+                          "Properties": {
+                            "FirstInfo": "Hello",
+                            "SecondInfo": "World"
+                          }
+                        }
+                      ],
+                      "BaseTypes": [
+                        "IMyRepository"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "Name": "MyService",
+              "Namespace": "MyApi",
+              "Modifier": 8345,
+              "Attributes": [],
+              "BaseTypes": [
+                "IMyService"
+              ]
+            }
+          ]
+        }
+      ],
+      "Name": "MyController",
+      "Namespace": "MyApi.Controllers",
+      "Modifier": 8343,
+      "Attributes": [],
+      "BaseTypes": [
+        "ControllerBase"
+      ]
+    }
+  ]
+}
