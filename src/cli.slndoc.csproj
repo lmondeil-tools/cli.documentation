@@ -8,11 +8,11 @@
 
 		<AssemblyName>slndoc</AssemblyName>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title>cli.slndoc</Title>
+		<Title>lmondeil.cli.slndoc</Title>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<PackageId>cli.slndoc</PackageId>
+		<PackageId>lmondeil.cli.slndoc</PackageId>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>slndoc</ToolCommandName>
 		<Authors>Laurent MONDEIL</Authors>
@@ -40,8 +40,6 @@
 
 	<ItemGroup>
 		<None Update="appsettings.json">
-			<Pack>True</Pack>
-			<PackagePath>/tools/$(TargetFramework)/any</PackagePath>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Assets\Templates\graph2mermaid.withicons.scriban.old">

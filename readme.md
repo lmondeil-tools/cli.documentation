@@ -104,6 +104,25 @@ internal class MyDocumentationAttribute: Attribute
 }
 ```
 
+> [!warning]
+>
+> The merge feature uses these attributes to replace a node by its graph. 
+> In order to enable this feature to work well, an attribute having a **ServiceName** property is required. Its value should be the name of the root node of the dependency service
+>
+> ```csharp
+> [ApiDependency(ServiceName="Another.Service")]
+> ```
+>
+> ```mermaid
+> flowchart LR
+> 	classDef className fill:#ffffff,stroke:#333,stroke-width:0px;
+> 	
+> 	Another.Service --> a(...):::className
+>  	Another.Service --> b(...):::className
+>     Another.Service --> c(...):::className
+> 						
+> ```
+
 Create a repository class, decorate it with your attribute and create the corresponding interface.
 
 ```csharp

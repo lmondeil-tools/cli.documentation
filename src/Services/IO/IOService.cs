@@ -116,7 +116,7 @@ internal class IOService : IIOService
         // Find corresponding service nodes
         // if the service node exists, replace the ApiDependency link with the service name
         var apiDependencies = result.Nodes
-            .Where(x => x.Type == ExportNodeType.ExternalDependency && x.Name == "ApiDependency")
+            .Where(x => x.Type == ExportNodeType.ExternalDependency && (x.Properties?.ContainsKey("ServiceName") ?? false))
             .Select(x => new {Node = x, ServiceName = x.Properties["ServiceName"] })
             .ToArray();
         var services = result.Nodes.Where(x => x.Type == ExportNodeType.Service).ToArray();
