@@ -1,4 +1,7 @@
 {{~# https://github.com/scriban/scriban #~}}
+{{~func MermaidKey
+  ret $0 | string.replace "\"" "" | string.replace "<" "Of" | string.replace ">" "" | string.replace "?" "" | string.replace "," "" | string.replace " " ""
+end~}}
 %%{
     init: {
     "theme": "neutral",
@@ -16,12 +19,13 @@ flowchart LR
 {{~ for node in nodes ~}}
 	{{~ if node.type != "ExternalDependency" ~}}
 		{{-
+			nodeKey = MermaidKey node.Key
 			case node.type
 				when "Service"
-					node.key + "@{ label: \"" + node.name + "\", icon: \"azure:worker-container-app\", pos: \"b\"}" 
+					nodeKey + "@{ label: \"" + node.name + "\", icon: \"azure:worker-container-app\", pos: \"b\"}" 
 				else
 					nodeText = node.name | string.replace "\"" "&quot;" | string.replace "<" "&lt;" | string.replace ">" "&gt;"
-					node.key + "[" + nodeText + "]"
+					nodeKey + "[" + nodeText + "]"
 			end
 		}}
 	{{~ end ~}}
@@ -31,6 +35,7 @@ subgraph Dependencies
 {{~ for node in nodes ~}}
 	{{~ if node.type == "ExternalDependency" ~}}
 		{{
+			nodeKey = MermaidKey node.Key
 			nodeText = (node.properties | object.to_json | string.replace "\"" "" | string.replace "{" "" | string.replace "}" "" | string.replace "," "<br/>")
 			if nodeText == "null"
 				nodeText = ""
@@ -49,7 +54,7 @@ subgraph Dependencies
 				else
 					nodeIcon = "teenyicons:question-circle-solid"
 			end
-			node.key + "@{ label: \"" + nodeText + "\", icon: \"" + nodeIcon + "\", pos: \"b\"}"
+			nodeKey + "@{ label: \"" + nodeText + "\", icon: \"" + nodeIcon + "\", pos: \"b\"}"
 		}}
 	{{~ end ~}}
 {{~ end ~}}
@@ -60,5 +65,5 @@ end
 	{{~ if edge.type == "ExternalDependency" ~}}
 		{{~ link = "--->" ~}}
 	{{~ end ~}}
-	{{ edge.from }} {{ link }} {{ edge.to }}
+	{{ MermaidKey edge.from }} {{ link }} {{ MermaidKey edge.to }}
 {{~ end ~}}
