@@ -1,0 +1,6 @@
+Hello {{ name }}!
+
+You are a {{ role }} with the following skills:
+{{ for skill in skills }}
+- {{ skill }}
+{{ end }}

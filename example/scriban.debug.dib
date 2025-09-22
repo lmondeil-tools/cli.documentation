@@ -1,0 +1,139 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"csharp"},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
+
+#!csharp
+
+#r "nuget: Scriban"
+
+#!csharp
+
+using System.Text.Json;
+using Scriban;
+using System.IO;
+
+#!csharp
+
+// var jsonData = File.ReadAllText("scriban.data.json");
+var jsonData = File.ReadAllText("internal.dependencies.json");
+//var templateString = File.ReadAllText("scriban.template.sbn");
+var templateString = File.ReadAllText("graph2mermaid.withicons.scriban");
+
+#!markdown
+
+### example
+
+#!markdown
+
+```csharp
+var jsonData = """
+{
+  "name": "Laurent",
+  "role": "Developer",
+  "skills": ["C#", ".NET", "Scriban"]
+}
+""";
+
+var templateString = """
+Hello {{ name }}!
+
+You are a {{ role }} with the following skills:
+{{ for skill in skills }}
+- {{ skill }}
+{{ end }}
+""";
+```
+
+#!csharp
+
+var templateString = """
+
+{{~ for node in Nodes ~}}
+- {{ node.Name }}: {{ node.Type }} ({{ MermaidKey node.Name }})
+{{~end~}}
+""";
+var fullTemplateString = """
+{{~func MermaidKey
+  ret $0 | string.replace "\"" "" | string.replace "<" "Of" | string.replace ">" "" | string.replace "?" "" | string.replace "," "" | string.replace " " ""
+end~}}
+%%{
+    init: {
+    "theme": "neutral",
+    "fontFamily": "monospace",
+    "flowchart": {
+        "htmlLabels": true,
+        "curve": "basis"
+    },
+    "look": "handDrawn"
+    }
+}%%
+flowchart LR
+{{~ for node in Nodes ~}}
+	{{~ if node.Type != "ExternalDependency" ~}}
+		{{-
+			nodeKey = MermaidKey node.Key
+			case node.Type
+				when "Service"
+					nodeKey + "@{ label: \"" + node.Name + "\", icon: \"azure:worker-container-app\", pos: \"b\"}" 
+				else
+					nodeText = node.Name | string.replace "\"" "&quot;" | string.replace "<" "&lt;" | string.replace ">" "&gt;"
+					nodeKey + "[" + nodeText + "]"
+			end
+		}}
+	{{~ end ~}}
+{{~ end }}
+
+subgraph Dependencies
+{{~ for node in Nodes ~}}
+	{{~ if node.Type == "ExternalDependency" ~}}
+		{{
+			nodeKey = MermaidKey node.Key
+			nodeText = (node.Properties | object.to_json | string.replace "\"" "" | string.replace "{" "" | string.replace "}" "" | string.replace "," "<br/>")
+			if nodeText == "null"
+				nodeText = ""
+			end
+			case node.Name
+				when "ApiDependency"
+					nodeIcon = "azure:api-connections"
+				when "CosmosDbDependency"
+					nodeIcon = "azure:azure-cosmos-db"
+				when "PackageDependency"
+					nodeIcon = "devicon:nuget"
+				when "RedisDependency"
+					nodeIcon = "azure:cache-redis"
+				when "SqlDependency"
+					nodeIcon = "azure:sql-database"
+				else
+					nodeIcon = "teenyicons:question-circle-solid"
+			end
+			nodeKey + "@{ label: \"" + nodeText + "\", icon: \"" + nodeIcon + "\", pos: \"b\"}"
+		}}
+	{{~ end ~}}
+{{~ end ~}}
+end
+
+{{~ for edge in Edges ~}}
+	{{~ link = "-->" ~}}
+	{{~ if edge.Type == "ExternalDependency" ~}}
+		{{~ link = "--->" ~}}
+	{{~ end ~}}
+	{{ MermaidKey edge.From }} {{ link }} {{ MermaidKey edge.To }}
+{{~ end ~}}
+""";
+
+#!markdown
+
+### parse and apply
+
+#!csharp
+
+var data = JsonSerializer.Deserialize<object>(jsonData, new JsonSerializerOptions
+{
+    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+});
+var template = Template.Parse(fullTemplateString);
+var result = template.Render(data);
+
+#!csharp
+
+result

@@ -1,0 +1,963 @@
+{
+  "Nodes": [
+    {
+      "Key": "fnaccomnav.bff.article",
+      "Name": "fnaccomnav.bff.article",
+      "Type": "Service"
+    },
+    {
+      "Key": "ArticleController",
+      "Name": "ArticleController",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.api.Controllers",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "ArticleThumbnailsService",
+      "Name": "ArticleThumbnailsService",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.ArticleThumbnailsService",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "PackageDependency#PackageName:fnaccomnav.unitservice.catalog.api.client\u0026ServiceName:fnaccomnav.unitservice.catalog",
+      "Name": "PackageDependency",
+      "Type": "ExternalDependency",
+      "Properties": {
+        "PackageName": "fnaccomnav.unitservice.catalog.api.client",
+        "ServiceName": "fnaccomnav.unitservice.catalog"
+      }
+    },
+    {
+      "Key": "IArticlesRetrieveService",
+      "Name": "IArticlesRetrieveService",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "IApiOffers",
+      "Name": "IApiOffers",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Repositories",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "ApiDependency#ServiceName:fnaccomnav.unitservice.offer",
+      "Name": "ApiDependency",
+      "Type": "ExternalDependency",
+      "Properties": {
+        "ServiceName": "fnaccomnav.unitservice.offer"
+      }
+    },
+    {
+      "Key": "ArticleThumbnailMapper",
+      "Name": "ArticleThumbnailMapper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "ArticleCommonMapper",
+      "Name": "ArticleCommonMapper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "UrlMappingHelper",
+      "Name": "UrlMappingHelper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.Seo",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "NavCoreSettings",
+      "Name": "NavCoreSettings",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "MapperFactory",
+      "Name": "MapperFactory",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Factory",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "IServiceProvider",
+      "Name": "IServiceProvider",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "UrlMappingService",
+      "Name": "UrlMappingService",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.Seo",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "SeoRepository",
+      "Name": "SeoRepository",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.Seo",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "PackageDependency#PackageName:fnaccomnav.unitservice.seo.api.client\u0026ServiceName:fnaccomnav.unitservice.seo",
+      "Name": "PackageDependency",
+      "Type": "ExternalDependency",
+      "Properties": {
+        "PackageName": "fnaccomnav.unitservice.seo.api.client",
+        "ServiceName": "fnaccomnav.unitservice.seo"
+      }
+    },
+    {
+      "Key": "ISeoUrlService",
+      "Name": "ISeoUrlService",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "ArticleControllerVersionless",
+      "Name": "ArticleControllerVersionless",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.api.Controllers",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "PingController",
+      "Name": "PingController",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.api.Controllers",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "SearchController",
+      "Name": "SearchController",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.api.Controllers",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "SearchService",
+      "Name": "SearchService",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "SearchEngineResolver",
+      "Name": "SearchEngineResolver",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "SearchEngineV4Strategy",
+      "Name": "SearchEngineV4Strategy",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService.FnacSearchEngineV4",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "FakeApiSearch",
+      "Name": "FakeApiSearch",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.integrationtests.Fakers",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "bool",
+      "Name": "bool",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "List\u003CTestingModels.SearchProduct\u003E",
+      "Name": "List\u003CTestingModels.SearchProduct\u003E",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "List\u003CTestingModels.SearchFacet\u003E",
+      "Name": "List\u003CTestingModels.SearchFacet\u003E",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "List\u003CTestingModels.SearchArborescenceNode\u003E?",
+      "Name": "List\u003CTestingModels.SearchArborescenceNode\u003E?",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "SearchEngineV4QueryFactory",
+      "Name": "SearchEngineV4QueryFactory",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService.FnacSearchEngineV4",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "SortTypeMappingEngineV4",
+      "Name": "SortTypeMappingEngineV4",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService.FnacSearchEngineV4",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "ProductsMapper",
+      "Name": "ProductsMapper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.FnacSearchEngineV4",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "CategoriesMapper",
+      "Name": "CategoriesMapper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.FnacSearchEngineV4",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "FakeArboService",
+      "Name": "FakeArboService",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.integrationtests.Fakers",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "Dictionary\u003Cstring, string\u003E?",
+      "Name": "Dictionary\u003Cstring, string\u003E?",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "ArboService",
+      "Name": "ArboService",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.ArboService",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "IFusionCache",
+      "Name": "IFusionCache",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "FacetsMapper",
+      "Name": "FacetsMapper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.FnacSearchEngineV4",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "DefaultFacetValuesMapper",
+      "Name": "DefaultFacetValuesMapper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.GoogleRetailSearch.Response.FacetsMappers",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "GoogleRetailSearchSettings",
+      "Name": "GoogleRetailSearchSettings",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "IStringLocalizerFactory",
+      "Name": "IStringLocalizerFactory",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "ToggleFacetValuesMapper",
+      "Name": "ToggleFacetValuesMapper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.GoogleRetailSearch.Response.FacetsMappers",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "PaginationListMapper",
+      "Name": "PaginationListMapper",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.FnacSearchEngineV4",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "GoogleRetailSearchStrategy",
+      "Name": "GoogleRetailSearchStrategy",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService.GoogleRetailSearch",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "GoogleRetailSearchRepository",
+      "Name": "GoogleRetailSearchRepository",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Repositories.SearchRepository",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "PackageDependency#PackageName:Google.Cloud.Retail.V2\u0026ServiceName:GoogleRetail",
+      "Name": "PackageDependency",
+      "Type": "ExternalDependency",
+      "Properties": {
+        "PackageName": "Google.Cloud.Retail.V2",
+        "ServiceName": "GoogleRetail"
+      }
+    },
+    {
+      "Key": "LazyOfSearchServiceClient",
+      "Name": "Lazy\u003CSearchServiceClient\u003E",
+      "Type": "InternalDependencyUnresolved",
+      "Properties": {
+        "Namespace": null,
+        "Modifier": "None"
+      }
+    },
+    {
+      "Key": "GoogleRetailSearchQueryFactory",
+      "Name": "GoogleRetailSearchQueryFactory",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService.GoogleRetailSearch",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "FacetSpecsProvider",
+      "Name": "FacetSpecsProvider",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService.GoogleRetailSearch",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "SortTypeMappingGoogleRetail",
+      "Name": "SortTypeMappingGoogleRetail",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Services.SearchService.GoogleRetailSearch",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "FilterExpressionGenerator",
+      "Name": "FilterExpressionGenerator",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.GoogleRetailSearch.Request.FilterExpressionGenerator",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "ExpressionFactoryResolver",
+      "Name": "ExpressionFactoryResolver",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.GoogleRetailSearch.Request.FilterExpressionGenerator",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "NumericalExpressionFactory",
+      "Name": "NumericalExpressionFactory",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.GoogleRetailSearch.Request.FilterExpressionGenerator.Factories",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "TextualExpressionFactory",
+      "Name": "TextualExpressionFactory",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.GoogleRetailSearch.Request.FilterExpressionGenerator.Factories",
+        "Modifier": "Public"
+      }
+    },
+    {
+      "Key": "FacetExpressionAppender",
+      "Name": "FacetExpressionAppender",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.Mappers.Search.GoogleRetailSearch.Request.FilterExpressionGenerator",
+        "Modifier": "Internal"
+      }
+    },
+    {
+      "Key": "SearchControllerVersionless",
+      "Name": "SearchControllerVersionless",
+      "Type": "InternalDependency",
+      "Properties": {
+        "Namespace": "fnaccomnav.bff.article.api.Controllers",
+        "Modifier": "Public"
+      }
+    }
+  ],
+  "Edges": [
+    {
+      "Key": "ArticleThumbnailsService --\u003E PackageDependency#PackageName:fnaccomnav.unitservice.catalog.api.client\u0026ServiceName:fnaccomnav.unitservice.catalog",
+      "Name": "PackageDependency",
+      "From": "ArticleThumbnailsService",
+      "To": "PackageDependency#PackageName:fnaccomnav.unitservice.catalog.api.client\u0026ServiceName:fnaccomnav.unitservice.catalog",
+      "Type": "ExternalDependency"
+    },
+    {
+      "Key": "IApiOffers --\u003E ApiDependency#ServiceName:fnaccomnav.unitservice.offer",
+      "Name": "ApiDependency",
+      "From": "IApiOffers",
+      "To": "ApiDependency#ServiceName:fnaccomnav.unitservice.offer",
+      "Type": "ExternalDependency"
+    },
+    {
+      "Key": "UrlMappingHelper --\u003E NavCoreSettings",
+      "Name": "NavCoreSettings",
+      "From": "UrlMappingHelper",
+      "To": "NavCoreSettings",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleCommonMapper --\u003E UrlMappingHelper",
+      "Name": "UrlMappingHelper",
+      "From": "ArticleCommonMapper",
+      "To": "UrlMappingHelper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "MapperFactory --\u003E IServiceProvider",
+      "Name": "IServiceProvider",
+      "From": "MapperFactory",
+      "To": "IServiceProvider",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleThumbnailMapper --\u003E ArticleCommonMapper",
+      "Name": "ArticleCommonMapper",
+      "From": "ArticleThumbnailMapper",
+      "To": "ArticleCommonMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleThumbnailMapper --\u003E MapperFactory",
+      "Name": "MapperFactory",
+      "From": "ArticleThumbnailMapper",
+      "To": "MapperFactory",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SeoRepository --\u003E PackageDependency#PackageName:fnaccomnav.unitservice.seo.api.client\u0026ServiceName:fnaccomnav.unitservice.seo",
+      "Name": "PackageDependency",
+      "From": "SeoRepository",
+      "To": "PackageDependency#PackageName:fnaccomnav.unitservice.seo.api.client\u0026ServiceName:fnaccomnav.unitservice.seo",
+      "Type": "ExternalDependency"
+    },
+    {
+      "Key": "SeoRepository --\u003E ISeoUrlService",
+      "Name": "ISeoUrlService",
+      "From": "SeoRepository",
+      "To": "ISeoUrlService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SeoRepository --\u003E NavCoreSettings",
+      "Name": "NavCoreSettings",
+      "From": "SeoRepository",
+      "To": "NavCoreSettings",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "UrlMappingService --\u003E SeoRepository",
+      "Name": "SeoRepository",
+      "From": "UrlMappingService",
+      "To": "SeoRepository",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleThumbnailsService --\u003E IArticlesRetrieveService",
+      "Name": "IArticlesRetrieveService",
+      "From": "ArticleThumbnailsService",
+      "To": "IArticlesRetrieveService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleThumbnailsService --\u003E IApiOffers",
+      "Name": "IApiOffers",
+      "From": "ArticleThumbnailsService",
+      "To": "IApiOffers",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleThumbnailsService --\u003E ArticleThumbnailMapper",
+      "Name": "ArticleThumbnailMapper",
+      "From": "ArticleThumbnailsService",
+      "To": "ArticleThumbnailMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleThumbnailsService --\u003E UrlMappingService",
+      "Name": "UrlMappingService",
+      "From": "ArticleThumbnailsService",
+      "To": "UrlMappingService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleThumbnailsService --\u003E NavCoreSettings",
+      "Name": "NavCoreSettings",
+      "From": "ArticleThumbnailsService",
+      "To": "NavCoreSettings",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleController --\u003E ArticleThumbnailsService",
+      "Name": "ArticleThumbnailsService",
+      "From": "ArticleController",
+      "To": "ArticleThumbnailsService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArticleControllerVersionless --\u003E ArticleThumbnailsService",
+      "Name": "ArticleThumbnailsService",
+      "From": "ArticleControllerVersionless",
+      "To": "ArticleThumbnailsService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FakeApiSearch --\u003E bool",
+      "Name": "bool",
+      "From": "FakeApiSearch",
+      "To": "bool",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FakeApiSearch --\u003E List\u003CTestingModels.SearchProduct\u003E",
+      "Name": "List\u003CTestingModels.SearchProduct\u003E",
+      "From": "FakeApiSearch",
+      "To": "List\u003CTestingModels.SearchProduct\u003E",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FakeApiSearch --\u003E List\u003CTestingModels.SearchFacet\u003E",
+      "Name": "List\u003CTestingModels.SearchFacet\u003E",
+      "From": "FakeApiSearch",
+      "To": "List\u003CTestingModels.SearchFacet\u003E",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FakeApiSearch --\u003E List\u003CTestingModels.SearchArborescenceNode\u003E?",
+      "Name": "List\u003CTestingModels.SearchArborescenceNode\u003E?",
+      "From": "FakeApiSearch",
+      "To": "List\u003CTestingModels.SearchArborescenceNode\u003E?",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineV4QueryFactory --\u003E SortTypeMappingEngineV4",
+      "Name": "SortTypeMappingEngineV4",
+      "From": "SearchEngineV4QueryFactory",
+      "To": "SortTypeMappingEngineV4",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FakeArboService --\u003E Dictionary\u003Cstring, string\u003E?",
+      "Name": "Dictionary\u003Cstring, string\u003E?",
+      "From": "FakeArboService",
+      "To": "Dictionary\u003Cstring, string\u003E?",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArboService --\u003E FakeApiSearch",
+      "Name": "FakeApiSearch",
+      "From": "ArboService",
+      "To": "FakeApiSearch",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ArboService --\u003E IFusionCache",
+      "Name": "IFusionCache",
+      "From": "ArboService",
+      "To": "IFusionCache",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "CategoriesMapper --\u003E FakeArboService",
+      "Name": "FakeArboService",
+      "From": "CategoriesMapper",
+      "To": "FakeArboService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "CategoriesMapper --\u003E ArboService",
+      "Name": "ArboService",
+      "From": "CategoriesMapper",
+      "To": "ArboService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "DefaultFacetValuesMapper --\u003E GoogleRetailSearchSettings",
+      "Name": "GoogleRetailSearchSettings",
+      "From": "DefaultFacetValuesMapper",
+      "To": "GoogleRetailSearchSettings",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "DefaultFacetValuesMapper --\u003E IStringLocalizerFactory",
+      "Name": "IStringLocalizerFactory",
+      "From": "DefaultFacetValuesMapper",
+      "To": "IStringLocalizerFactory",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ToggleFacetValuesMapper --\u003E IStringLocalizerFactory",
+      "Name": "IStringLocalizerFactory",
+      "From": "ToggleFacetValuesMapper",
+      "To": "IStringLocalizerFactory",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FacetsMapper --\u003E DefaultFacetValuesMapper",
+      "Name": "DefaultFacetValuesMapper",
+      "From": "FacetsMapper",
+      "To": "DefaultFacetValuesMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FacetsMapper --\u003E ToggleFacetValuesMapper",
+      "Name": "ToggleFacetValuesMapper",
+      "From": "FacetsMapper",
+      "To": "ToggleFacetValuesMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineV4Strategy --\u003E FakeApiSearch",
+      "Name": "FakeApiSearch",
+      "From": "SearchEngineV4Strategy",
+      "To": "FakeApiSearch",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineV4Strategy --\u003E SearchEngineV4QueryFactory",
+      "Name": "SearchEngineV4QueryFactory",
+      "From": "SearchEngineV4Strategy",
+      "To": "SearchEngineV4QueryFactory",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineV4Strategy --\u003E ProductsMapper",
+      "Name": "ProductsMapper",
+      "From": "SearchEngineV4Strategy",
+      "To": "ProductsMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineV4Strategy --\u003E CategoriesMapper",
+      "Name": "CategoriesMapper",
+      "From": "SearchEngineV4Strategy",
+      "To": "CategoriesMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineV4Strategy --\u003E FacetsMapper",
+      "Name": "FacetsMapper",
+      "From": "SearchEngineV4Strategy",
+      "To": "FacetsMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineV4Strategy --\u003E PaginationListMapper",
+      "Name": "PaginationListMapper",
+      "From": "SearchEngineV4Strategy",
+      "To": "PaginationListMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchRepository --\u003E PackageDependency#PackageName:Google.Cloud.Retail.V2\u0026ServiceName:GoogleRetail",
+      "Name": "PackageDependency",
+      "From": "GoogleRetailSearchRepository",
+      "To": "PackageDependency#PackageName:Google.Cloud.Retail.V2\u0026ServiceName:GoogleRetail",
+      "Type": "ExternalDependency"
+    },
+    {
+      "Key": "GoogleRetailSearchRepository --\u003E LazyOfSearchServiceClient",
+      "Name": "Lazy\u003CSearchServiceClient\u003E",
+      "From": "GoogleRetailSearchRepository",
+      "To": "LazyOfSearchServiceClient",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FacetSpecsProvider --\u003E GoogleRetailSearchSettings",
+      "Name": "GoogleRetailSearchSettings",
+      "From": "FacetSpecsProvider",
+      "To": "GoogleRetailSearchSettings",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ExpressionFactoryResolver --\u003E NumericalExpressionFactory",
+      "Name": "NumericalExpressionFactory",
+      "From": "ExpressionFactoryResolver",
+      "To": "NumericalExpressionFactory",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "ExpressionFactoryResolver --\u003E TextualExpressionFactory",
+      "Name": "TextualExpressionFactory",
+      "From": "ExpressionFactoryResolver",
+      "To": "TextualExpressionFactory",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FilterExpressionGenerator --\u003E ExpressionFactoryResolver",
+      "Name": "ExpressionFactoryResolver",
+      "From": "FilterExpressionGenerator",
+      "To": "ExpressionFactoryResolver",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "FilterExpressionGenerator --\u003E FacetExpressionAppender",
+      "Name": "FacetExpressionAppender",
+      "From": "FilterExpressionGenerator",
+      "To": "FacetExpressionAppender",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchQueryFactory --\u003E GoogleRetailSearchSettings",
+      "Name": "GoogleRetailSearchSettings",
+      "From": "GoogleRetailSearchQueryFactory",
+      "To": "GoogleRetailSearchSettings",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchQueryFactory --\u003E FacetSpecsProvider",
+      "Name": "FacetSpecsProvider",
+      "From": "GoogleRetailSearchQueryFactory",
+      "To": "FacetSpecsProvider",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchQueryFactory --\u003E SortTypeMappingGoogleRetail",
+      "Name": "SortTypeMappingGoogleRetail",
+      "From": "GoogleRetailSearchQueryFactory",
+      "To": "SortTypeMappingGoogleRetail",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchQueryFactory --\u003E FilterExpressionGenerator",
+      "Name": "FilterExpressionGenerator",
+      "From": "GoogleRetailSearchQueryFactory",
+      "To": "FilterExpressionGenerator",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchStrategy --\u003E GoogleRetailSearchRepository",
+      "Name": "GoogleRetailSearchRepository",
+      "From": "GoogleRetailSearchStrategy",
+      "To": "GoogleRetailSearchRepository",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchStrategy --\u003E GoogleRetailSearchQueryFactory",
+      "Name": "GoogleRetailSearchQueryFactory",
+      "From": "GoogleRetailSearchStrategy",
+      "To": "GoogleRetailSearchQueryFactory",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchStrategy --\u003E ProductsMapper",
+      "Name": "ProductsMapper",
+      "From": "GoogleRetailSearchStrategy",
+      "To": "ProductsMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchStrategy --\u003E CategoriesMapper",
+      "Name": "CategoriesMapper",
+      "From": "GoogleRetailSearchStrategy",
+      "To": "CategoriesMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchStrategy --\u003E FacetsMapper",
+      "Name": "FacetsMapper",
+      "From": "GoogleRetailSearchStrategy",
+      "To": "FacetsMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "GoogleRetailSearchStrategy --\u003E PaginationListMapper",
+      "Name": "PaginationListMapper",
+      "From": "GoogleRetailSearchStrategy",
+      "To": "PaginationListMapper",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineResolver --\u003E SearchEngineV4Strategy",
+      "Name": "SearchEngineV4Strategy",
+      "From": "SearchEngineResolver",
+      "To": "SearchEngineV4Strategy",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchEngineResolver --\u003E GoogleRetailSearchStrategy",
+      "Name": "GoogleRetailSearchStrategy",
+      "From": "SearchEngineResolver",
+      "To": "GoogleRetailSearchStrategy",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchService --\u003E SearchEngineResolver",
+      "Name": "SearchEngineResolver",
+      "From": "SearchService",
+      "To": "SearchEngineResolver",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchController --\u003E SearchService",
+      "Name": "SearchService",
+      "From": "SearchController",
+      "To": "SearchService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "SearchControllerVersionless --\u003E SearchService",
+      "Name": "SearchService",
+      "From": "SearchControllerVersionless",
+      "To": "SearchService",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "fnaccomnav.bff.article --\u003E ArticleController",
+      "Name": "ArticleController",
+      "From": "fnaccomnav.bff.article",
+      "To": "ArticleController",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "fnaccomnav.bff.article --\u003E ArticleControllerVersionless",
+      "Name": "ArticleControllerVersionless",
+      "From": "fnaccomnav.bff.article",
+      "To": "ArticleControllerVersionless",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "fnaccomnav.bff.article --\u003E PingController",
+      "Name": "PingController",
+      "From": "fnaccomnav.bff.article",
+      "To": "PingController",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "fnaccomnav.bff.article --\u003E SearchController",
+      "Name": "SearchController",
+      "From": "fnaccomnav.bff.article",
+      "To": "SearchController",
+      "Type": "Unknown"
+    },
+    {
+      "Key": "fnaccomnav.bff.article --\u003E SearchControllerVersionless",
+      "Name": "SearchControllerVersionless",
+      "From": "fnaccomnav.bff.article",
+      "To": "SearchControllerVersionless",
+      "Type": "Unknown"
+    }
+  ],
+  "Root": {
+    "Key": "fnaccomnav.bff.article",
+    "Name": "fnaccomnav.bff.article",
+    "Type": "Service"
+  }
+}

@@ -1,0 +1,54 @@
+{{~# https://github.com/scriban/scriban #~}}
+
+
+{{~# Manage node #~}}
+{{~ for node in nodes ~}}
+	{{~ if node.type != "ExternalDependency" ~}}
+		{{-
+			nodeKey = MermaidCleanString node.name
+			case node.type
+				when "Service"
+					nodeKey + "@{ label: \"" + nodeName + "\", icon: \"azure:worker-container-app\", pos: \"b\"}" 
+				else
+					nodeText = node.name | string.replace "\"" "&quot;" | string.replace "<" "&lt;" | string.replace ">" "&gt;"
+					nodeKey + "[" + nodeText + "]"
+			end
+		}}
+	{{~ end ~}}
+{{~ end }}
+
+subgraph Dependencies
+{{~ for node in nodes ~}}
+	{{~ if node.type == "ExternalDependency" ~}}
+		{{
+			nodeText = (node.properties | object.to_json | string.replace "\"" "" | string.replace "{" "" | string.replace "}" "" | string.replace "," "<br/>")
+			if nodeText == "null"
+				nodeText = ""
+			end
+			case node.name
+				when "ApiDependency"
+					nodeIcon = "azure:api-connections"
+				when "CosmosDbDependency"
+					nodeIcon = "azure:azure-cosmos-db"
+				when "PackageDependency"
+					nodeIcon = "devicon:nuget"
+				when "RedisDependency"
+					nodeIcon = "azure:cache-redis"
+				when "SqlDependency"
+					nodeIcon = "azure:sql-database"
+				else
+					nodeIcon = "teenyicons:question-circle-solid"
+			end
+			node.key + "@{ label: \"" + nodeText + "\", icon: \"" + nodeIcon + "\", pos: \"b\"}"
+		}}
+	{{~ end ~}}
+{{~ end ~}}
+end
+
+{{~ for edge in edges ~}}
+	{{~ link = "-->" ~}}
+	{{~ if edge.type == "ExternalDependency" ~}}
+		{{~ link = "--->" ~}}
+	{{~ end ~}}
+	{{ edge.from }} {{ link }} {{ edge.to }}
+{{~ end ~}}
