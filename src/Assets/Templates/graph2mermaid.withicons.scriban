@@ -19,7 +19,7 @@ flowchart LR
 {{~ for node in nodes ~}}
 	{{~ if node.type != "ExternalDependency" ~}}
 		{{-
-			nodeKey = MermaidKey node.Key
+			nodeKey = MermaidKey node.key
 			case node.type
 				when "Service"
 					nodeKey + "@{ label: \"" + node.name + "\", icon: \"azure:worker-container-app\", pos: \"b\"}" 
@@ -35,7 +35,7 @@ subgraph Dependencies
 {{~ for node in nodes ~}}
 	{{~ if node.type == "ExternalDependency" ~}}
 		{{
-			nodeKey = MermaidKey node.Key
+			nodeKey = MermaidKey node.key
 			nodeText = (node.properties | object.to_json | string.replace "\"" "" | string.replace "{" "" | string.replace "}" "" | string.replace "," "<br/>")
 			if nodeText == "null"
 				nodeText = ""

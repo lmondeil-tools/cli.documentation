@@ -47,7 +47,6 @@ You are a {{ role }} with the following skills:
 #!csharp
 
 var templateString = """
-
 {{~ for node in Nodes ~}}
 - {{ node.Name }}: {{ node.Type }} ({{ MermaidKey node.Name }})
 {{~end~}}
