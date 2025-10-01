@@ -14,6 +14,8 @@ end~}}
     }
 }%%
 flowchart LR
+%% In order to convert this file to svg using mermaid-cli, use the following command %%
+%% mmdc -i <<thisfile>> -o <<theoutputfile>> --iconPacks @iconify-json/logos @iconify-json/teenyicons @iconify-json/devicon @iconify-json/carbon @iconify-json/streamline-freehand-color --iconPacksNamesAndUrls "azure#https://raw.githubusercontent.com/NakayamaKento/AzureIcons/refs/heads/main/icons.json" %%
 
 {{~# Manage node #~}}
 {{~ for node in nodes ~}}
@@ -42,7 +44,7 @@ subgraph Dependencies
 			end
 			case node.name
 				when "ApiDependency"
-					nodeIcon = "azure:api-connections"
+					nodeIcon = "streamline-freehand-color:server-api-cloud"
 				when "CosmosDbDependency"
 					nodeIcon = "azure:azure-cosmos-db"
 				when "PackageDependency"
