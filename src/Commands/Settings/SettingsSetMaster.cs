@@ -5,7 +5,8 @@ using McMaster.Extensions.CommandLineUtils;
 [Command("set")]
 [Subcommand(
     typeof(SettingsSetExportExclusionsRegex),
-    typeof(SettingsSetAttributesToScan)
+    typeof(SettingsSetAttributesToScan),
+    typeof(SettingsSetRootClassesFilter)
     )]
 internal class SettingsSetMaster
 {

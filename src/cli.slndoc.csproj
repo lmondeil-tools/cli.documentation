@@ -34,11 +34,18 @@
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.2" />
 		<PackageReference Include="Scriban" Version="6.2.1" />
+		<PackageReference Include="Serialize.Linq" Version="4.0.167" />
 		<PackageReference Include="YamlDotNet" Version="16.3.0" />
 		<PackageReference Include="McMaster.Extensions.Hosting.CommandLine" Version="4.1.1" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="appsettings.withfilter.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="appsettings.default.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

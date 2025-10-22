@@ -8,6 +8,8 @@ using cli.slndoc.Services.Roslyn;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using System.Linq;
+
 namespace cli.slndoc.Services;
 internal class SlnExtractionService : ISlnExtractionService
 {
@@ -50,7 +52,7 @@ internal class SlnExtractionService : ISlnExtractionService
         _logger.LogInformation("Documentation attributes filtered");
 
         _logger.LogInformation("Filtering API controllers...");
-        var rootClasses = allClasses.Where(RoslynExtractionService.ApiControllersFilter).ToArray();
+        var rootClasses = allClasses.Where(_servicesDependenciesSettings.Value.RootClassesFilter ?? (x => true)).ToArray();
         _logger.LogInformation("Found {Count} API controllers", rootClasses.Count());
 
 

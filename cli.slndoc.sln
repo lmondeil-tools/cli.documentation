@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cli.slndoc", "src\cli.slndoc.csproj", "{30D0F630-9DD0-4C4E-8214-1611470F667C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli.slndoc.tests", "tests\cli.slndoc.tests\cli.slndoc.tests.csproj", "{9A1E6715-7D7A-490A-9E37-1C931A3266B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{30D0F630-9DD0-4C4E-8214-1611470F667C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D0F630-9DD0-4C4E-8214-1611470F667C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D0F630-9DD0-4C4E-8214-1611470F667C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1E6715-7D7A-490A-9E37-1C931A3266B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1E6715-7D7A-490A-9E37-1C931A3266B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1E6715-7D7A-490A-9E37-1C931A3266B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1E6715-7D7A-490A-9E37-1C931A3266B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,25 +6,23 @@ using Microsoft.CodeAnalysis.MSBuild;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-using YamlDotNet.Serialization;
-
 namespace cli.slndoc.Services.Roslyn;
 internal class RoslynExtractionService : IRoslynExtractionService
 {
-    public static Func<ExtractedClass, bool> ApiControllersFilter = (x) =>
-    {
-        try
-        {
-            var result = x.Modifier == ExtractedModifier.Public
-            &&
-            x.BaseTypes.Contains("ControllerBase");
-            return result;
-        }
-        catch (Exception e)
-        {
-            throw;
-        }
-    };
+    //public static Func<ExtractedClass, bool> ApiControllersFilter = (x) =>
+    //{
+    //    try
+    //    {
+    //        var result = x.Modifier == ExtractedModifier.Public
+    //        &&
+    //        x.BaseTypes.Contains("ControllerBase");
+    //        return result;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        throw;
+    //    }
+    //};
     private readonly ServicesDependenciesSettings _settings;
     private readonly ILogger<RoslynExtractionService> _logger;
 

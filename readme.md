@@ -171,11 +171,13 @@ public class MyController: ControllerBase
 
 > [!NOTE]
 >
-> There are 2 settings that can be set : 
+> There are 3 settings that can be set : 
 >
 > * `attributes-to-scan` : The names of the attributes types that represents the external dependencies in the code. The `ApiDependency` attribute with "ServiceName" property is a special attribute used on merges.
 >
 > * `exclude-classes` : The names of the types that won't be included in the graph
+>
+> * `root-filter` : The lambda expression that filters the root types
 
 
 
@@ -212,6 +214,12 @@ Set the attributes types names to scan
 
 ```
 ▶ slndoc settings set attributes-to-scan MyDocumentation MyDocumentationAttribute
+```
+```
+▶ slndoc settings set exclude-classes ^ILogger<.* ^string$
+```
+```
+▶ slndoc settings set root-filter "@class => @class.BaseTypes.Any(t => Regex.IsMatch(t, @\"IMyInterface\\<(\\w+)\\>\"))"
 ```
 
 ## Run graph generation
@@ -463,6 +471,24 @@ Loads a non hierarchical json file and generates a mermaid file.
 
   Attributes        List of the names of the attributes that represent a dependency : Array of string in json format
                     Example: 	 attributes-to-scan attr1 attr2 attr3
+
+### Options
+
+ `-e|--environment`  Environment to set the settings for
+  -?|-h|--help      Show help information.
+
+
+
+## slndoc settings set root-filter
+
+### Usage
+
+  slndoc settings set root-filter `[options]` 	
+
+### Arguments
+
+  Filter            The lambda expression of type func<ExtractClass, bool> used to filter root classes
+                    Example: 	 root-filter "@class => @class.BaseTypes.Any(t => Regex.IsMatch(t, @\"IMyInterface\\<(\\w+)\\>\"))"
 
 ### Options
 
