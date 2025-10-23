@@ -1,7 +1,7 @@
 ﻿namespace cli.slndoc.Models.Exports;
 
-public enum ExportEdgeType
+public static class ExportEdgeType
 {
-    Unknown,
-    ExternalDependency
+    public const string Unknown = "Unknown";
+    public const string ExternalDependency = "ExternalDependency";
 }

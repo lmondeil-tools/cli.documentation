@@ -1,10 +1,9 @@
 ﻿    namespace cli.slndoc.Models.Exports;
 
-public enum ExportNodeType
+public static class ExportNodeType
 {
-    Unknown,
-    Service,
-    InternalDependency,
-    InternalDependencyUnresolved,
-    ExternalDependency
-}
+    public const string Unknown = "Unknown";
+    public const string Service = "Service";
+    public const string InternalDependency = "InternalDependency";
+    public const string InternalDependencyUnresolved = "InternalDependencyUnresolved";
+    public const string ExternalDependency = "ExternalDependency";}

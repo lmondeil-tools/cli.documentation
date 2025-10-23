@@ -14,6 +14,6 @@ public class ExportNode
     };
     public string Name { get; set; }
 
-    public ExportNodeType Type { get; set; } = ExportNodeType.Unknown;
+    public string Type { get; set; } = ExportNodeType.Unknown;
     public IDictionary<string, string> Properties { get; set; }
 }
