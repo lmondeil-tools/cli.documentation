@@ -6,5 +6,5 @@ public class ExportEdge
     public string Name { get; set; }
     public string From { get; set; }
     public string To { get; set; }
-    public ExportEdgeType Type { get; set; } = ExportEdgeType.Unknown;
+    public string Type { get; set; } = ExportEdgeType.Unknown;
 }
