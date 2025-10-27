@@ -7,11 +7,15 @@ using System.Collections.Generic;
 public class ExportNode
 {
     protected string _key;
-    public string Key => _key ?? Type switch
+    public string Key
     {
-        ExportNodeType.ExternalDependency => $"{Name}#{string.Join("&", Properties?.Select(x => $"{x.Key.Trim()}:{x.Value.Trim()}") ?? Enumerable.Empty<string>())}".Replace(" ", "").GetCleanedMermaidString(),
-        _ => Name.GetCleanedMermaidString()
-    };
+        get => _key ?? Type switch
+        {
+            ExportNodeType.ExternalDependency => $"{Name}#{string.Join("&", Properties?.Select(x => $"{x.Key.Trim()}:{x.Value.Trim()}") ?? Enumerable.Empty<string>())}".Replace(" ", "").GetCleanedMermaidString(),
+            _ => Name.GetCleanedMermaidString()
+        }; 
+        set => _key = value;
+    }
     public string Name { get; set; }
 
     public string Type { get; set; } = ExportNodeType.Unknown;
