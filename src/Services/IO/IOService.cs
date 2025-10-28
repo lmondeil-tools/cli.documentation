@@ -14,6 +14,11 @@ internal class IOService : IIOService
 {
     private readonly IMappingService _mappingService;
     private readonly ILogger<IOService> _logger;
+    private static readonly string[] _replacableDependencyTypes =
+    [
+            ExportNodeType.ExternalDependency,
+            ExportNodeType.PackageDependency
+    ];
 
     public IOService(IMappingService mappingService, ILogger<IOService> logger)
     {
@@ -116,7 +121,7 @@ internal class IOService : IIOService
         // Find corresponding service nodes
         // if the service node exists, replace the ApiDependency link with the service name
         var apiDependencies = result.Nodes
-            .Where(x => x.Type == ExportNodeType.ExternalDependency && (x.Properties?.ContainsKey("ServiceName") ?? false))
+            .Where(x => _replacableDependencyTypes.Contains(x.Type) && (x.Properties?.ContainsKey("ServiceName") ?? false))
             .Select(x => new {Node = x, ServiceName = x.Properties["ServiceName"] })
             .ToArray();
         var services = result.Nodes.Where(x => x.Type == ExportNodeType.Service).ToArray();
@@ -136,7 +141,7 @@ internal class IOService : IIOService
 
         // remove unused ApiDependencies
         var dependencies = apiDependencies.GroupBy(x => x.Node.Key);
-        var links = result.Edges.Where(x => x.Name == "ApiDependency")
+        var links = result.Edges.Where(x => _replacableDependencyTypes.Contains(x.Name))
             .GroupBy(x => x.To);
         var toDeletes = dependencies.GroupJoin(links,
             d => d.Key,
