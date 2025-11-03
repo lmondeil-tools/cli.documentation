@@ -7,5 +7,4 @@ public static class ExportNodeType
     public const string InternalDependency = "InternalDependency";
     public const string InternalDependencyUnresolved = "InternalDependencyUnresolved";
     public const string ExternalDependency = "ExternalDependency";
-    public const string PackageDependency = "PackageDependency";
 }

@@ -1,6 +1,4 @@
-﻿using cli.slndoc.Extensions;
-using cli.slndoc.Models;
-using cli.slndoc.Models.Exports;
+﻿using cli.slndoc.Models.Exports;
 using cli.slndoc.Services.Mappings;
 
 using Microsoft.Extensions.Logging;
@@ -14,11 +12,7 @@ internal class IOService : IIOService
 {
     private readonly IMappingService _mappingService;
     private readonly ILogger<IOService> _logger;
-    private static readonly string[] _replacableDependencyTypes =
-    [
-            ExportNodeType.ExternalDependency,
-            ExportNodeType.PackageDependency
-    ];
+    private static readonly string[] _replacableDependencyNames = [ "ApiDependency", "PackageDependency" ];
 
     public IOService(IMappingService mappingService, ILogger<IOService> logger)
     {
@@ -120,34 +114,25 @@ internal class IOService : IIOService
         // Find ApiDependency nodes
         // Find corresponding service nodes
         // if the service node exists, replace the ApiDependency link with the service name
-        var apiDependencies = result.Nodes
-            .Where(x => _replacableDependencyTypes.Contains(x.Type) && (x.Properties?.ContainsKey("ServiceName") ?? false))
+        var externalDependenciesWithServiceName = result.Nodes
+            .Where(x => x.Type == ExportNodeType.ExternalDependency && (x.Properties?.ContainsKey("ServiceName") ?? false))
             .Select(x => new {Node = x, ServiceName = x.Properties["ServiceName"] })
             .ToArray();
         var services = result.Nodes.Where(x => x.Type == ExportNodeType.Service).ToArray();
-        var replaceableApiDependencies = apiDependencies
-            .Join(services, a => a.ServiceName, s => s.Name, (a, s) => new { a.Node, ServiceName = s.Name, ServiceKey = s.Key })
-            .ToArray();
-        var linksToReplace = result.Edges
-            .Join(replaceableApiDependencies, l => l.To, a => a.Node.Key, (l, a) => new { Replace = l, By = new ExportEdge { Name = a.ServiceName, From = l.From, To = a.ServiceKey } })
-            .ToArray();
 
-        foreach (var item in linksToReplace)
-        {
-            // Replace the ApiDependency link with the service name
-            result.Edges.Remove(item.Replace);
-            result.Edges.Add(item.By);
-        }
+        ReplaceExternalDependencies(result);
 
         // remove unused ApiDependencies
-        var dependencies = apiDependencies.GroupBy(x => x.Node.Key);
-        var links = result.Edges.Where(x => _replacableDependencyTypes.Contains(x.Name))
+        var apiDependenciesGroupedByKey = externalDependenciesWithServiceName.GroupBy(x => x.Node.Key);
+        var potentiallyDeletableLinksGroupedByTo = result.Edges.Where(x => _replacableDependencyNames.Contains(x.Name))
             .GroupBy(x => x.To);
-        var toDeletes = dependencies.GroupJoin(links,
+
+        var linksGroupstoDeletes = apiDependenciesGroupedByKey.GroupJoin(potentiallyDeletableLinksGroupedByTo,
             d => d.Key,
             l => l.Key,
             (d, l) => new { ApiDependency = d, LinkGroup = l })
-            .Where(x => !x.LinkGroup.Any())
+            .Where(x => !x.LinkGroup.Any());
+        var toDeletes = linksGroupstoDeletes
             .SelectMany(x => x.ApiDependency.Select(g => g.Node))
             .ToArray();
 
@@ -170,5 +155,73 @@ internal class IOService : IIOService
         result.Edges = uniqueEdges;
 
         return result;
+    }
+
+    private void ReplaceExternalDependencies(ExportGraph graph)
+    {
+        // From the graph, find all external dependencies with a ServiceName property
+        var externalDependenciesWithServiceName = graph.Nodes
+            .Where(x
+                => x.Type == ExportNodeType.ExternalDependency &&
+                    (x.Properties?.ContainsKey("ServiceName") ?? false)
+            ).Select(x => new MergeExternalDependency(x, x.Properties["ServiceName"], null))
+            .ToArray();
+
+        // Find all service nodes
+        var services = graph.Nodes.Where(x => x.Type == ExportNodeType.Service).ToArray();
+
+        // Find matching [external dependencies with a ServiceName property] and [services] 
+        // external dependency ServiceName SHOULD MATCH service Name
+        var replaceableExternalDependencies = externalDependenciesWithServiceName
+            .Join(services, 
+                ed => ed.ServiceName, 
+                s => s.Name, 
+                (ed, s) => new MergeExternalDependency(ed.Node, ed.ServiceName, s.Key ))
+            .ToArray();
+
+        //--------------------------------------------------------------------------------------
+        // Replace ApiDependency links
+        //--------------------------------------------------------------------------------------
+
+        // Find links having as target one of the replaceable external dependencies
+        // And group them by Node Name
+        var apiDependencyLinksToReplace = graph.Edges
+            .Join(replaceableExternalDependencies.Where(x => x.Node.Name == "ApiDependency"), 
+                l => l.To, 
+                a => a.Node.Key, 
+                (l, a) => new { Replace = l, By = new ExportEdge { Name = a.ServiceName, From = l.From, To = a.ServiceKey } })
+            .ToArray();
+
+        // Replace previously found links
+        // target is the service key
+        foreach (var item in apiDependencyLinksToReplace)
+        {
+            // Replace the ApiDependency link with the service name
+            graph.Edges.Remove(item.Replace);
+            graph.Edges.Add(item.By);
+        }
+
+
+        //--------------------------------------------------------------------------------------
+        // Insert PackageDependency links
+        //--------------------------------------------------------------------------------------
+
+        // Find links having as target one of the replaceable external dependencies
+        // And group them by Node Name
+        var packageDependencyLinksToReplace = graph.Edges
+            .Join(replaceableExternalDependencies.Where(x => x.Node.Name == "PackageDependency"),
+                l => l.To,
+                a => a.Node.Key,
+                (l, a) => new ExportEdge { Name = a.ServiceName, From = l.To, To = a.ServiceKey })
+            .ToArray();
+
+        // Replace previously found links
+        // target is the service key
+        foreach (var item in packageDependencyLinksToReplace)
+        {
+            // Add link from Package to Service
+            graph.Edges.Add(item);
+        }
+
     }
 }
