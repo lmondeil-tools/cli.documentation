@@ -45,7 +45,7 @@ subgraph Dependencies
 			case node.name
 				when "ApiDependency"
 					nodeIcon = "streamline-freehand-color:server-api-cloud"
-					nodeText = node.properties.serviceName
+					nodeText = node.properties.serviceName ?? node.properties.ServiceName
 				when "CosmosDbDependency"
 					nodeIcon = "azure:azure-cosmos-db"
 				when "PackageDependency"
