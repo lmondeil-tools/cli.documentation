@@ -7,7 +7,8 @@ using McMaster.Extensions.CommandLineUtils;
     typeof(SettingsShow),
     typeof(SettingsSwitchTo),
     typeof(SettingsSetMaster),
-    typeof(SettingsDelete)
+    typeof(SettingsDelete),
+    typeof(SettingsSave)
 )]
 internal class SettingsMaster
 {

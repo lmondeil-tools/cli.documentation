@@ -54,6 +54,7 @@ public class SettingsService
             throw new FileNotFoundException();
         File.Copy(sourceFilePath, targetFilePath, true);
     }
+    
     public static async Task DeleteAsync(string environment)
     {
         if (string.IsNullOrWhiteSpace(environment))
@@ -61,6 +62,15 @@ public class SettingsService
         string filePath = Path.Combine(AppContext.BaseDirectory, $"appsettings.{environment}.json");
         if (File.Exists(filePath))
             File.Delete(filePath);
+    }
+
+    public static async Task SaveAsync(string environment)
+    {
+        string sourceFilePath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
+        string targetFilePath = Path.Combine(AppContext.BaseDirectory, $"appsettings.{environment}.json");
+        if (!File.Exists(sourceFilePath))
+            throw new FileNotFoundException();
+        File.Copy(sourceFilePath, targetFilePath, true);
     }
 
     private static async Task<string> SaveSettingsAsync<TSettings>(TSettings settings, string? environment = null)
