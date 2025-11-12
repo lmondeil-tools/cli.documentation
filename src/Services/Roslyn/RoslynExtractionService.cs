@@ -6,6 +6,8 @@ using Microsoft.CodeAnalysis.MSBuild;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using System.Text.RegularExpressions;
+
 namespace cli.slndoc.Services.Roslyn;
 internal class RoslynExtractionService : IRoslynExtractionService
 {
@@ -44,7 +46,8 @@ internal class RoslynExtractionService : IRoslynExtractionService
 
         // Get all Class declarations from roslyn
         _logger.LogInformation("Loading classes...");
-        var allClasses = (await Task.WhenAll(solution.Projects
+        var projects = solution.Projects.Where(p => !_settings.ProjectsExclusionsRegex.Any(r => Regex.IsMatch(p.Name, r)));
+        var allClasses = (await Task.WhenAll(projects
                 .SelectMany(p => p.Documents)
                 .Select(async (x) => await x.GetExtractedClassesAsync(_settings.ExportExclusionsRegex))))
                 .SelectMany(x => x)

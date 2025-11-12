@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 public class ServicesDependenciesSettings
 {
     public IEnumerable<string> AttributesToScan { get; set; } = [];
+    public IEnumerable<string> ProjectsExclusionsRegex { get; set; } = [];
     public IEnumerable<string> ExportExclusionsRegex { get; set; } = [];
     public string? RootClassesFilterAsString { get; set; }
 
